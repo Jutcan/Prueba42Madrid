@@ -1,1 +1,1 @@
-cat "$(git rev-parse --show-toplevel)/.git/info/exclude" | grep -v "#"
+git ls-files -oi --exclude-standard
