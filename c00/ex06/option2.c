@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   copy.c                                             :+:      :+:    :+:   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jutcan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 09:29:25 by jutcan            #+#    #+#             */
-/*   Updated: 2025/11/18 18:50:49 by jutcan           ###   ########.fr       */
+/*   Updated: 2025/11/16 23:13:38 by jutcan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
-/*
+
 void	print_write(int x1, int x2, int y1, int y2)
 {
 	char	ascii;
@@ -48,29 +47,40 @@ void	validator(int x1, int x2, int y1, int y2)
 			}
 		}
 	}
-}*/
+}
 
 void	ft_print_comb2(void)
 {
-	int	x;
-	int	y;
+	int	x1;
+	int	x2;
+	int	y1;
+	int	y2;
 
-	x = 0;
-	while (x <= 98)
+	x1 = 0;
+	while (x1 <= 9)
 	{
-		y = x + 1;
-		while (y <= 99)
+		x2 = 0;
+		while (x2 <= 9)
 		{
-			printf("%02d %02d, ",x,y);
-			y++;
+			y1 = 0;
+			while (y1 <= 9)
+			{
+				y2 = 0;
+				while (y2 <= 9)
+				{
+					validator(x1, x2, y1, y2);
+					y2++;
+				}
+				y1++;
+			}
+			x2++;
 		}
-		x++;
+		x1++;
 	}
 }
-
-int	main(void)
+/*
+void	main(void)
 {
 	ft_print_comb2();
-	return(0);
 }
-
+*/

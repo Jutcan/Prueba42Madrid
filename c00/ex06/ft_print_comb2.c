@@ -6,81 +6,76 @@
 /*   By: jutcan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 09:29:25 by jutcan            #+#    #+#             */
-/*   Updated: 2025/11/16 23:13:38 by jutcan           ###   ########.fr       */
+/*   Updated: 2025/11/19 07:44:31 by jutcan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	print_write(int x1, int x2, int y1, int y2)
+void	print_x(int x)
 {
 	char	ascii;
 
-	ascii = '0' + x1;
-	write (1, &ascii, 1);
-	ascii = '0' + x2;
-	write (1, &ascii, 1);
-	write (1, " ", 1);
-	ascii = '0' + y1;
-	write (1, &ascii, 1);
-	ascii = '0' + y2;
-	write (1, &ascii, 1);
-	if (x1 != 9 || x2 != 8 || y1 != 9 || y2 != 9)
+	if (x > 9)
 	{
-		write (1, ", ", 2);
-	}
-}
-
-void	validator(int x1, int x2, int y1, int y2)
-{
-	if (y1 > x1)
-	{
-		print_write(x1, x2, y1, y2);
+		ascii = '0' + x / 10;
+		write (1, &ascii, 1);
+		ascii = '0' + x % 10;
+		write (1, &ascii, 1);
+		write (1, " ", 1);
 	}
 	else
 	{
-		if (y1 == x1)
-		{
-			if (y2 > x2)
-			{
-				print_write(x1, x2, y1, y2);
-			}
-		}
+		write (1, "0", 1);
+		ascii = '0' + x;
+		write (1, &ascii, 1);
+		write (1, " ", 1);
+	}
+}
+
+void	print_y(int x, int y)
+{
+	char	ascii;
+
+	if (y > 9)
+	{
+		ascii = '0' + y / 10;
+		write (1, &ascii, 1);
+		ascii = '0' + y % 10;
+		write (1, &ascii, 1);
+		if (x != 98 || y != 99)
+			write (1, ", ", 2);
+	}
+	else
+	{
+		write (1, "0", 1);
+		ascii = '0' + y;
+		write (1, &ascii, 1);
+		write (1, ", ", 2);
 	}
 }
 
 void	ft_print_comb2(void)
 {
-	int	x1;
-	int	x2;
-	int	y1;
-	int	y2;
+	int	x;
+	int	y;
 
-	x1 = 0;
-	while (x1 <= 9)
+	x = 0;
+	while (x <= 98)
 	{
-		x2 = 0;
-		while (x2 <= 9)
+		y = x + 1;
+		while (y <= 99)
 		{
-			y1 = 0;
-			while (y1 <= 9)
-			{
-				y2 = 0;
-				while (y2 <= 9)
-				{
-					validator(x1, x2, y1, y2);
-					y2++;
-				}
-				y1++;
-			}
-			x2++;
+			print_x(x);
+			print_y(x, y);
+			y++;
 		}
-		x1++;
+		x++;
 	}
 }
-/*
-void	main(void)
+
+int	main(void)
 {
 	ft_print_comb2();
+	return (0);
 }
-*/
