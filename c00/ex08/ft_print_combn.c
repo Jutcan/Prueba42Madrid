@@ -1,58 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_print_combn.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jutcan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 08:40:39 by jutcan            #+#    #+#             */
-/*   Updated: 2025/11/20 17:12:27 by jutcan           ###   ########.fr       */
+/*   Created: 2025/11/20 13:44:58 by jutcan            #+#    #+#             */
+/*   Updated: 2025/11/20 17:26:02 by jutcan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-void	print_write(int a, int b, int c)
+#include <stdio.h>
+void	ft_print_combn(int n)
 {
 	char	ascii;
+	int	digit;
+	int	i;
 
-	ascii = '0' + a;
-	write (1, &ascii, 1);
-	ascii = '0' + b;
-	write (1, &ascii, 1);
-	ascii = '0' + c;
-	write (1, &ascii, 1);
-	if (a != 7 || b != 8 || c != 9)
+	if (n > 0 && n < 10)
 	{
-		write (1, ", ", 2);
-	}
-}
-
-void	ft_print_comb(void)
-{
-	int	a;
-	int	b;
-	int	c;
-
-	a = 0;
-	while (a <= 7)
-	{
-		b = a + 1;
-		while (b <= 9)
+		i = 0;
+		digit = 1;
+		while (i < n)
 		{
-			c = b + 1;
-			while (c <= 9)
-			{
-				print_write(a, b, c);
-				c++;
-			}
-			b++;
+			digit = digit * 10;
+			i++;
 		}
-		a++;
+	}
+	i = 0;
+	while (i < digit)
+	{
+		printf("%d ", i);
+		i++;
 	}
 }
 
 int	main(void)
 {
-	ft_print_comb();
+	ft_print_combn(2);
 }
