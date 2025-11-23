@@ -6,7 +6,7 @@
 /*   By: jutcan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:00:14 by jutcan            #+#    #+#             */
-/*   Updated: 2025/11/20 13:39:00 by jutcan           ###   ########.fr       */
+/*   Updated: 2025/11/23 15:22:29 by jutcan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_char_array(char ascii[], int i)
 	}
 }
 
-void	ft_putnbr(int nb)
+void	validator(int nb)
 {
 	char	ascii[12];
 	int		i;
@@ -50,7 +50,15 @@ void	ft_putnbr(int nb)
 	print_char_array(ascii, i - 1);
 }
 
+void	ft_putnbr(int nb)
+{
+	if (nb == -2147483648)
+		write (1, "-2147483648", 11);
+	else
+		validator(nb);
+}
+/*
 int	main(void)
 {
 	ft_putnbr(42);
-}
+}*/
