@@ -6,9 +6,18 @@
 /*   By: jutcan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 08:15:39 by jutcan            #+#    #+#             */
-/*   Updated: 2025/11/25 09:00:43 by jutcan           ###   ########.fr       */
+/*   Updated: 2025/11/26 07:48:38 by jutcan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+void	change_pos(int *tab, int i, int pos_lower)
+{
+	int	aux;
+
+	aux = tab[i];
+	tab[i] = tab[pos_lower];
+	tab[pos_lower] = aux;
+}
 
 void	ft_sort_int_tab(int *tab, int size)
 {
@@ -16,7 +25,6 @@ void	ft_sort_int_tab(int *tab, int size)
 	int	j;
 	int	pos_lower;
 	int	lower;
-	int	aux;
 
 	i = 0;
 	while (i < size - 1)
@@ -33,13 +41,11 @@ void	ft_sort_int_tab(int *tab, int size)
 			}
 			j++;
 		}
-		aux = tab[i];
-		tab[i] = tab[pos_lower];
-		tab[pos_lower] = aux;
+		change_pos(tab, i, pos_lower);
 		i++;
 	}
 }
-
+/*
 #include <stdio.h>
 int	main(void)
 {
@@ -60,4 +66,4 @@ int	main(void)
 		i++;
 	}
 	printf(" Después \n");
-}
+}*/
